@@ -1,0 +1,31 @@
+
+#game-box {
+  background-color: black;
+  width: 400px;
+  height: 600px;
+  position: relative; /* para poder posicionar elementos absolutos dentro */
+  overflow: hidden; /* evita que elementos que existen dentro del div, se visualicen por fuera */
+}
+
+#ball {
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  /* background-color: blue; */
+
+  /* para posicionarla dentro del game-box */
+  position: absolute;
+  top: 10px;
+  /* left: 10px; */
+}
+
+#paddle {
+  background-color: white;
+  width: 100px;
+  height: 20px;
+
+  position: absolute;
+  top: 530px;
+  left: 150px;
+}
