@@ -118,16 +118,16 @@ addButtonNode.addEventListener("click", () => {
   console.log( inputNode.value );
 
   // // como creo un elemento de li y lo agrego al ul
-  // const liNode = document.createElement("li");
-  // liNode.innerText = inputNode.value;
+  const liNode = document.createElement("li");
+  liNode.innerText = inputNode.value
 
-  // ulNode.append(liNode)
+  ulNode.append(liNode)
 
-  ulNode.innerHTML += `
-  <li style="color: green">
-    ${inputNode.value}
-  </li>
-  `
+  // ulNode.innerHTML += `
+  // <li style="color: green">
+  //   ${inputNode.value}
+  // </li>
+  // `
 
 })
 
@@ -136,3 +136,68 @@ addButtonNode.addEventListener("click", () => {
 
 // console.log(newPNode.innerText.length)
 // console.log(newPNode.textContent.length)
+
+
+
+// recursion
+
+let control = 0;
+
+function printSomething () {
+
+  console.log("hola infinito", control)
+  control++
+
+  if (control < 200) {
+    // printSomething()
+    // JS va ajecutar esto lo más rapido que pueda
+    requestAnimationFrame( printSomething ) 
+    // va a crear recursion pero 60 veces por segundo => depende de velocidad de refresco de la pantalla
+    // lo usamos para crear efectos de animacion en JS => para juegos
+  }
+
+}
+
+// printSomething()
+
+const gameBoxNode = document.querySelector("#game-box")
+const cubeNode = document.querySelector("#cube")
+
+gameBoxNode.style.width = "400px";
+gameBoxNode.style.height = "400px";
+gameBoxNode.style.backgroundColor = "darkgray";
+gameBoxNode.style.position = "relative"; // posicionar elementos internos de forma absoluta
+
+cubeNode.style.width = "30px";
+cubeNode.style.height = "30px";
+cubeNode.style.backgroundColor = "black";
+cubeNode.style.position = "absolute";
+cubeNode.style.top = "20px";
+
+let cubePositionX = 30;
+cubeNode.style.left = `${cubePositionX}px`;
+
+function animateGame() {
+  console.log("intentando mover cubito")
+
+  // cambio la posición del cubito
+  cubePositionX++
+
+  // actualiza la posición del cubito
+  cubeNode.style.left = `${cubePositionX}px`;
+
+  if (cubePositionX < 370) {
+    requestAnimationFrame(animateGame)
+  }
+
+}
+
+animateGame()
+
+
+
+
+
+
+
+
